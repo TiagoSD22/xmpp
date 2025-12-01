@@ -1,0 +1,35 @@
+hosts:
+  - localhost
+
+loglevel: info
+
+listen:
+  # Client connections (C2S)
+  -
+    port: 5222
+    ip: "::"
+    module: ejabberd_c2s
+  # Web admin interface  
+  -
+    port: 5280
+    ip: "::"
+    module: ejabberd_http
+    request_handlers:
+      /admin: ejabberd_web_admin
+
+acl:
+  admin:
+    user:
+      - "admin@localhost"
+
+access_rules:
+  c2s:
+    allow: all
+  configure:
+    allow: admin
+
+modules:
+  mod_disco: {}          # Service discovery
+  mod_register: {}       # In-band registration 
+  mod_roster: {}         # Contact list management
+  mod_ping: {}           # XMPP ping
