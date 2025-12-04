@@ -16,6 +16,7 @@ listen:
     module: ejabberd_http
     request_handlers:
       /admin: ejabberd_web_admin
+      /api: mod_http_api
 
 acl:
   admin:
@@ -33,3 +34,4 @@ modules:
   mod_register: {}       # In-band registration 
   mod_roster: {}         # Contact list management
   mod_ping: {}           # XMPP ping
+  mod_http_api: {}       # HTTP API for user management
